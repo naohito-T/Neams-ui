@@ -1,0 +1,9 @@
+# 転送速度を上げるため以下を除外する。
+# .dockerignoreファイル に記述されたファイル群はこのtarに含まれない事になり、無用なファイルのDaemonへの転送をしないというメリットがあります。
+# また、ビルドでもランタイムでも不要とするものを定義する事でDocker Imageに不要なファイルが混入する事を未然に防ぐ事もできます。
+.config
+.git
+.github/workflows
+.nuxt
+node_modules
+.eslintcache

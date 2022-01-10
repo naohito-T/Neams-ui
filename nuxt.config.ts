@@ -1,5 +1,18 @@
-export default {
-  // Global page headers: https://go.nuxtjs.dev/config-head
+import { NuxtConfig } from '@nuxt/types';
+
+// これはDockerから渡しているため不要かも。
+// const ENV = process.env.NODE_ENV ?? 'local';
+// const ENV_FILE_PATH = `./env/decrypt/.env.${EXE_ENV}`;
+// require('dotenv').config({ path: ENV_FILE_PATH });
+
+const nuxtConfig: NuxtConfig = {
+  srcDir: 'src/',
+  globalName: 'neams-ui',
+  env: {
+    ENV: process.env.NODE_ENV ?? 'local',
+    API_KEY: process.env.API_KEY ?? 'none',
+    API_URL: process.env.API_URL ?? 'none',
+  },
   head: {
     title: 'app',
     htmlAttrs: {
@@ -18,7 +31,9 @@ export default {
   css: [],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [],
+  plugins: [
+    { src: '@/plugins/app'}
+  ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -27,6 +42,7 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
+    '@nuxtjs/composition-api/module'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -38,9 +54,11 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: process.env.API_URL,
   },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {},
 }
+
+export default nuxtConfig;
