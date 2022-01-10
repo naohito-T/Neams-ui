@@ -1,4 +1,3 @@
-import { AxiosInstance } from 'axios';
 import { IRequestHomeAPI } from '../service';
 import { RequestAPI } from './app';
 
@@ -10,6 +9,7 @@ import { RequestAPI } from './app';
 
 export class RequestHomeAPI extends RequestAPI implements IRequestHomeAPI {
   public fetchHello = async (): Promise<string> => {
+    console.log(`axios l${this.axios.defaults.baseURL}`);
     return await this.axios.get<string>('/api/v1/home/test/hello').then((r) => r.data);
   }
 }

@@ -6,7 +6,7 @@ import Axios, { AxiosInstance } from 'axios';
 
 const baseAxios = (): AxiosInstance => {
   return Axios.create({
-    baseURL: process.env.API_BASE_URL,
+    baseURL: process.env.API_URL,
     timeout: 1500,
   });
 };

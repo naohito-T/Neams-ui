@@ -1,23 +1,40 @@
 <template>
-  <Tutorial />
+  <div>
+    <button
+      type="button"
+      name="button"
+      @click="getMsg"
+    >
+      RailsからAPIを取得する
+    </button>
+    <div
+      v-for="(msg, i) in msgs"
+      :key="i"
+    >
+      {{ msg }}
+    </div>
+  </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, useContext } from '@nuxtjs/composition-api';
-import Tutorial from '@/components/Tutorial.vue';
+import { defineComponent, useContext, useFetch } from '@nuxtjs/composition-api';
 
 export default defineComponent({
-  components: {
-    Tutorial,
-  },
   setup() {
     const { app } = useContext();
     console.log(`process.env.API_URL: ${process.env.API_URL}`);
-    console.log(`process.env.WORKDIR: ${process.env.WORKDIR}`);
-    console.log(`process.env.CONTAINER_PORT: ${process.env.CONTAINER_PORT}`);
-    console.log(`api疎通${JSON.stringify(app.$app.home.fetchHello())}`);
+    useFetch(async () => {
+      await app.$app.home.fetchHello();
+    })
 
-    return {};
+    const getMsg = async () => {
+      const res = await app.$app.home.fetchHello();
+      console.log(`resres${JSON.stringify(res)}`);
+    }
+
+    return {
+      getMsg
+    };
   },
 })
 </script>
