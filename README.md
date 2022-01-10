@@ -1,5 +1,11 @@
 # app
 
+## version
+
+```sh
+Nuxt 2.15.8
+```
+
 ## Build Setup
 
 ```bash
