@@ -1,0 +1,27 @@
+# 環境変数にアクセスできる
+# これをDockerFileのENV(ARGでもよいのかな）にセットしておく必要がある
+setup:
+  config:
+    NODE_ENV: production
+    # （任意）パッケージのインストールを操作するフラグ。
+    # NPM_CONFIG_PRODUCTION = falseとは この環境変数がfalseの場合は、devDependenciesのパッケージを削除しません。
+    # Herokuのデフォルトの挙動
+    # Node.jsのアプリをデプロイする場合、Herokuはpackege.jsonに書かれた全てのパッケージをインストールする。
+    # そしてビルドを完了したのちにdevDependenciesに書かれたパッケージを削除し、デプロイを実行する。
+    # 問題点
+    # 既にインストールされている@nuxtjs/eslint-configや、
+    # 後でインストールする@nuxtjs/vuetifyなど、devDependenciesに書かれたモジュールが無いよ。
+    # とエラーを吐くことがあります。
+    NPM_CONFIG_PRODUCTION: false
+build:
+  docker:
+    web: Dockerfile
+  config:
+    WORKDIR: app
+    API_URL: "https://<前回作成したRailsアプリの名前>.herokuapp.com"
+run:
+  web: yarn run start
+
+## heroku 実行順序
+## Dockerfile 中にCMDがあればそれを実行
+## herokuコマンド

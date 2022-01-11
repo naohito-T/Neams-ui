@@ -10,18 +10,19 @@ ARG API_URL
 # ja_JP.UTF-8は、理由がない限り使わない方が良い
 # WORKDIRは$API_WORK_DIRを参照している。
 ENV HOME=/${WORKDIR} \
-    LANG=C.UTF-8 \
-    TZ=Asia/Tokyo \
-    HOST=0.0.0.0 \
-    API_URL=${API_URL}
-
-COPY package*.json ./
-RUN yarn install
-
-# ファイル一式をコンテナにすべてコピー
-COPY . ./
+  LANG=C.UTF-8 \
+  TZ=Asia/Tokyo \
+  HOST=0.0.0.0 \
+  API_URL=${API_URL}
 
 # Dockerfileで定義した命令を実行するコンテナ内の作業ディレクトリパス
 WORKDIR ${HOME}
+
+COPY package*.json ./
+RUN yarn install
+# ファイル一式をコンテナにすべてコピー
+COPY . ./
+
+RUN yarn build
 
 EXPOSE ${CONTAINER_PORT}
