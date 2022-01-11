@@ -5,14 +5,16 @@ FROM node:16.13.1-alpine
 ARG WORKDIR
 ARG CONTAINER_PORT
 ARG API_URL
-
+ARG LANG
+ARG TZ
+ARG HOST
 # C.UTF-8のCとは、コンピューター用のen_US（英語）を意味する
 # ja_JP.UTF-8は、理由がない限り使わない方が良い
 # WORKDIRは$API_WORK_DIRを参照している。
 ENV HOME=/${WORKDIR} \
-  LANG=C.UTF-8 \
-  TZ=Asia/Tokyo \
-  HOST=0.0.0.0 \
+  LANG=/${LANG} \
+  TZ=/${TZ} \
+  HOST=/${HOST} \
   API_URL=${API_URL}
 
 # Dockerfileで定義した命令を実行するコンテナ内の作業ディレクトリパス
