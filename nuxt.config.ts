@@ -6,6 +6,7 @@ import { NuxtConfig } from '@nuxt/types';
 // require('dotenv').config({ path: ENV_FILE_PATH });
 
 const nuxtConfig: NuxtConfig = {
+  ssr: true,
   srcDir: 'src/',
   globalName: 'neams-ui',
   env: {

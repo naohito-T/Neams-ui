@@ -7,12 +7,6 @@
     >
       RailsからAPIを取得する
     </button>
-    <div
-      v-for="(msg, i) in msgs"
-      :key="i"
-    >
-      {{ msg }}
-    </div>
   </div>
 </template>
 

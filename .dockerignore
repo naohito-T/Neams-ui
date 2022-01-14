@@ -7,3 +7,4 @@
 .nuxt
 node_modules
 .eslintcache
+.ash_history
