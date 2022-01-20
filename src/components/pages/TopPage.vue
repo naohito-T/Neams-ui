@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="(user, i) in state.users"
+          v-for="(user, i) in users"
           :key="`user-${i}`"
         >
           <td>{{ user.id }}</td>
@@ -35,11 +35,6 @@
 import { defineComponent, reactive, useAsync, useContext, useFetch } from '@nuxtjs/composition-api';
 import { User } from '@/lib/app/types/response/home'
 
-/**
- * pagesディレクトリの役割
- * mountなどしたい時や、Store, injectonなどを渡す
- */
-
 export default defineComponent({
   setup() {
     const { app } = useContext();
@@ -47,11 +42,10 @@ export default defineComponent({
       users: [],
     });
 
-    /** memo */
-    /** useFetch, useAsync どちらもpageディレクトリ内で使える。 */
     useFetch(async () => {
       state.users = await app.$app.home.fetchUsers();
     })
+
     useAsync(async () => {
       state.users = await app.$app.home.fetchUsers();
       console.log(`resres${JSON.stringify(state.users)}`);

@@ -1,3 +1,5 @@
+import { User } from '../types/response/home';
+
 export interface IRequestHomeAPI {
-  fetchHello(): Promise<string>;
+  fetchUsers(): Promise<User[]>;
 };

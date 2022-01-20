@@ -1,4 +1,5 @@
 import { IRequestHomeAPI } from '../service';
+import { User } from '../types/response/home';
 import { RequestAPI } from './app';
 
 /**
@@ -8,8 +9,15 @@ import { RequestAPI } from './app';
  */
 
 export class RequestHomeAPI extends RequestAPI implements IRequestHomeAPI {
-  public fetchHello = async (): Promise<string> => {
-    console.log(`axios l${this.axios.defaults.baseURL}`);
-    return await this.axios.get<string>('/api/v1/home/test/hello').then((r) => r.data);
+  /**
+   * @desc user一覧を返す
+   */
+  public fetchUsers = async (): Promise<User[]> => {
+    /** axioxのdefaul URL確認 */
+    console.log(`axios ${this.axios.defaults.baseURL}`);
+    return await this.axios.get<User[]>('/api/v1/home/users').then((r) => {
+      console.log(`r.date: ${JSON.stringify(r.data)}`)
+      return r.data
+    });
   }
 }

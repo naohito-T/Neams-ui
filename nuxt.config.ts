@@ -6,7 +6,8 @@ import { NuxtConfig } from '@nuxt/types';
 // require('dotenv').config({ path: ENV_FILE_PATH });
 
 const nuxtConfig: NuxtConfig = {
-  ssr: true,
+  ssr: false, // mode: 'spa'このオプションは非推奨になった。代わりにssr: 'false'
+  target: 'server',
   srcDir: 'src/',
   globalName: 'neams-ui',
   env: {

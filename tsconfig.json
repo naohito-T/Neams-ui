@@ -12,8 +12,12 @@
     "experimentalDecorators": true,
     "baseUrl": "./src",
     "paths": {
-      "~/*": ["./src/*"],
-      "@/*": ["./src/*"]
+      "~/*": [
+        "./*"
+      ],
+      "@/*": [
+        "./*"
+      ]
     },
     "typeRoots": [
       "./src/@types"
