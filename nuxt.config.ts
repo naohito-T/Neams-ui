@@ -10,6 +10,13 @@ const nuxtConfig: NuxtConfig = {
   target: 'server',
   srcDir: 'src/',
   globalName: 'neams-ui',
+  /** 新規機能 */
+  publicRuntimeConfig: {},
+  privateRuntimeConfig: {},
+  /**
+   * env プロパティ : ビルド時に必要な環境変数を登録する。
+   *  @see https://blog.cloud-acct.com/posts/u-nuxtjs-v213-versionup
+   */
   env: {
     ENV: process.env.NODE_ENV ?? 'local',
     API_KEY: process.env.API_KEY ?? 'none',
@@ -38,6 +45,7 @@ const nuxtConfig: NuxtConfig = {
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
+  // trueの場合は「components」ディレクトリ以下のファイルが自動で読み込まれるようになりました。
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules

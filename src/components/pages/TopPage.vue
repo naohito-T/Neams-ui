@@ -14,7 +14,7 @@
       </thead>
       <tbody>
         <tr
-          v-for="(user, i) in users"
+          v-for="(user, i) in state.users"
           :key="`user-${i}`"
         >
           <td>{{ user.id }}</td>
