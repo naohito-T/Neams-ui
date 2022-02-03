@@ -9,6 +9,16 @@ import { RequestAPI } from './app';
  */
 
 export class RequestHomeAPI extends RequestAPI implements IRequestHomeAPI {
+
+  /** loginしたらstorageに保存 */
+  /** 失敗したらtoastにする */
+  // public login = async (): Promise<User> => {
+  //   await this.axios.get<User>('/api/v1/home/login').then((r) => {
+  //     console.log('login 成功')
+  //     return r.data
+  //   }).catch((_) => console.log('login 失敗'))
+  // }
+
   /**
    * @desc user一覧を返す
    */
@@ -20,4 +30,5 @@ export class RequestHomeAPI extends RequestAPI implements IRequestHomeAPI {
       return r.data
     });
   }
+
 }

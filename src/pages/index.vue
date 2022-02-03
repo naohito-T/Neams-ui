@@ -40,6 +40,12 @@ import { User } from '@/lib/app/types/response/home'
  * mountなどしたい時や、Store, injectonなどを渡す
  */
 
+/**
+ * Nuxt.jsが初期化された直後に、
+ * ローカルストレージに保存した有効期限内であれば、
+ * Railsにユーザーを取得するようリクエストします。
+ */
+
 export default defineComponent({
   setup() {
     const { app } = useContext();
