@@ -1,3 +1,6 @@
+/**
+ * @desc このプロジェクトではESLint（JSコード解析）
+ */
 module.exports = {
   root: true,
   env: {
@@ -16,4 +19,4 @@ module.exports = {
     'no-useless-constructor': 'off',
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
   },
-}
+};

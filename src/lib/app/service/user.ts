@@ -1,6 +1,11 @@
 /**
  * login した後のapi
  */
+import { User } from '../types/response/user';
+
 export interface IRequestUserAPI {
-  fetchToken(): Promise<string>;
+  login(): Promise<User>;
+  logout(): Promise<void>;
+  currentUser(): Promise<string>;
+  // fetchToken(): Promise<string>;
 }

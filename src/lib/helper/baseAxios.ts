@@ -28,9 +28,19 @@ const writeResLogger = (res: AxiosResponse) => {
   });
 }
 
-const onFulfiled = (config: AxiosRequestConfig) => {
-    config.headers.common.Authorization = `Bearer ${accessToken}`
-};
+/** tokenは一緒 */
+
+
+/**
+ * tokenは一緒じゃない
+ *
+ */
+
+/** headerにsetする */
+// const setAuthorizationHeader = (config: AxiosRequestConfig, token: string) => {
+//   config.headers.common.Authorization = `Bearer ${token}`
+//   return config;
+// };
 
 const baseAxios = (): AxiosInstance => {
   return Axios.create({
@@ -39,12 +49,15 @@ const baseAxios = (): AxiosInstance => {
   });
 };
 
+/** Tokenと一緒じゃないapi アクセス */
 const apiWithoutToken = (): AxiosInstance => {
   const axios = baseAxios();
   axios.interceptors.request.use(writeReqLogger);
   axios.interceptors.response.use(writeResLogger);
   return axios;
 };
+
+/** Tokenと一緒の api アクセス */
 
 export { apiWithoutToken };
 

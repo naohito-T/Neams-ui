@@ -21,6 +21,7 @@ const nuxtConfig: NuxtConfig = {
     ENV: process.env.NODE_ENV ?? 'local',
     API_KEY: process.env.API_KEY ?? 'none',
     API_URL: process.env.API_URL ?? 'none',
+    CRYPTO_KEY: process.env.CRYPTO_KEY ?? 'none',
   },
   head: {
     title: 'app',
